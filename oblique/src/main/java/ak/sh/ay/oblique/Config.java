@@ -127,12 +127,14 @@ public class Config {
             return val;
         }
         int p = (int) Math.ceil(w * Math.tan(Math.toRadians(angle)));
-        return getTanWithOutConflict(p, w, angle, hype);
+
+        return (int) Math.ceil(p / Math.tan(Math.toRadians(angle)));
     }
 
     public Path getPath(float h, float w) {
-        int left_base = (int) Math.ceil(h / Math.tan(Math.toRadians(startAngle)));
-        int right_base = (int) Math.ceil(w * Math.tan(Math.toRadians(endAngle)));
+        double hyp = Math.hypot(w, h);
+        int left_base = getTanWithOutConflict(h, w, startAngle, hyp);
+        int right_base = getTanWithOutConflict(h, w, endAngle, hyp);
 
         float a1 = 0, a2 = 0, b1 = w, b2 = 0, c1 = w, c2 = h, d1 = 0, d2 = h;
         try {
