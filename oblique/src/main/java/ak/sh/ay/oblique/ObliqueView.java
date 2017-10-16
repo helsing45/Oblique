@@ -295,6 +295,7 @@ public class ObliqueView extends android.support.v7.widget.AppCompatImageView {
                 paint.setShader(config.getRadialGradient(width, height));
                 break;
             case 3:
+                paint.setColor(config.getBaseColor());
                 setupBitmap(this, width, height);
                 break;
         }
